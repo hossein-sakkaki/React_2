@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 
 import style from './styles/style.module.css';
 
@@ -20,13 +20,12 @@ class App extends Component {
                     </ul>
                 </div>
                 <div className={style.body}>
-                    <BrowserRouter>
+
                         <Routes>
                             <Route path='/' element={<Home />}></Route>
                             <Route path='/movies' element={<Movies />}></Route>
                             <Route path='/about-us' element={<AboutUs />}></Route>
                         </Routes>
-                    </BrowserRouter>
                 </div>
             </>
         );
