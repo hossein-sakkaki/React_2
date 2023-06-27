@@ -7,7 +7,7 @@ class About_us extends Component {
         return (
             <>
                 <div className={style.info_box}>
-                    hossein
+                    About
                 </div>
             </>
         );
