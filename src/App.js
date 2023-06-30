@@ -13,19 +13,17 @@ class App extends Component {
             <>
                 <div>
                     <ul className={style.navbar}>
-
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/movies">Movies</Link></li>
                         <li><Link to="/about-us">About us</Link></li>
                     </ul>
                 </div>
                 <div className={style.body}>
-
-                        <Routes>
-                            <Route path='/' element={<Home />}></Route>
-                            <Route path='/movies' element={<Movies />}></Route>
-                            <Route path='/about-us' element={<AboutUs />}></Route>
-                        </Routes>
+                    <Routes>
+                        <Route path='/' element={<Home />}></Route>
+                        <Route path='/movies' element={<Movies />}></Route>
+                        <Route path='/about-us' element={<AboutUs />}></Route>
+                    </Routes>
                 </div>
             </>
         );

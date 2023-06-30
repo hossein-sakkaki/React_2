@@ -36,10 +36,15 @@
     border: 1px solid var(--light-color);
 }
 .body{
-    padding: 100px;
+    padding: 20px;
     display: flex;
     gap: 100px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+}
+
+/* Home */
+.home{
+    border: 1px solid rgb(0, 255, 89);
 }
 
 /* About us */
@@ -48,13 +53,92 @@
 }
 
 
-
 /* Movies */
-.movie{
+.error{
+    border: 1px solid rgb(255, 0, 0);
+}
+.movie_container{
+    width: 100%;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: space-between;
+    
+}
+.search_bar{
+    width: 19%;
+    border: 1px solid var(--drak-color);
+    border-radius: 5px;
+}
+.search_box{
+    border: 1px solid blue;
+
+}
+.genre_choice{
     border: 1px solid blue;
 }
 
-/* Home */
-.home{
-    border: 1px solid rgb(0, 255, 89);
+.movies{
+    /* border: 1px solid blue; */
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap: 20px;
+
+    
+}
+.movie{
+    width: 300px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--drak-color);
+    border-radius: 5px;
+    background-color: rgb(249, 249, 248);
+}
+.movie span{
+    font-weight: bolder;
+}
+.movie h2{
+    margin-bottom: 0;
+}
+.movie h4{
+    margin-top: 0;
+    font-weight: lighter;
+    padding: 5px;
+}
+.movie h5{
+    margin: 0;
+    font-weight: lighter;
+    font-size: larger;
+}
+
+.movie img{
+    width: 200px;
+    height: 300px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+.movie>div:first-child{
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 10px;
+    gap: 20px;
+    text-align: center;
+
+}
+.movie>div:last-child{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 30px;
+    padding: 10px;
+}
+.movie>div:last-child div{
+    height: 90px;
+    overflow: scroll;
 }
