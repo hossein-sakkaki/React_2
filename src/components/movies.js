@@ -25,7 +25,7 @@ class Movies extends Component {
             .catch(error => this.setState({ isError: true }));
     };
     getGenreData = () => {
-        // var movies = this.state;
+        var movies = this.state;
         console.log(this.state);
     }
 
