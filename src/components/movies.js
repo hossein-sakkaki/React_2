@@ -58,8 +58,6 @@ class Movies extends Component {
         });
     }
     
-    
-
     render() { 
         const {movies, isError, genres, searchValue} = this.state;
         return (
