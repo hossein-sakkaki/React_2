@@ -138,7 +138,13 @@
     margin-top: 30px;
     padding: 10px;
 }
-.movie>div:last-child div{
-    height: 90px;
+.movie>div:last-child div h4{
+    height: 50px;
     overflow: scroll;
+    text-align: center;
+
 }
+.movie>div:last-child div {
+    width: 100%;
+}
+

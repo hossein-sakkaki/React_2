@@ -4,7 +4,7 @@ import style from '../styles/style.module.css'
 class Movie extends Component {
     state = {  } 
     render() { 
-        const {title, year, thumbnail, genre, actor} = this.props;
+        const {title, year, thumbnail, genre, director} = this.props;
 
         return (
             <>
@@ -20,8 +20,8 @@ class Movie extends Component {
                             <h4>{genre}</h4> 
                         </div>
                         <div>
-                            <span>Actors:</span>
-                            <h4>{actor}</h4>
+                            <span>Director:</span>
+                            <h4>{director}</h4>
                         </div>
 
 
