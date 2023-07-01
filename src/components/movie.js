@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import style from '../styles/style.module.css'
 
 class Movie extends Component {
-    state = {  } 
     render() { 
         const {title, year, thumbnail, genre, director} = this.props;
-
         return (
             <>
                 <div className={style.movie}>
@@ -23,10 +21,7 @@ class Movie extends Component {
                             <span>Director:</span>
                             <h4>{director}</h4>
                         </div>
-
-
                     </div>
-
                 </div>
             </>
         );

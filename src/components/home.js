@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import style from '../styles/style.module.css';
+import Slider from './slider';
 
-
-class Home extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <>
-            <div className={style.home}>
-                Home
+const Home = () => {
+    return (
+        <>
+            <div className={style.home_page_container}>
+                <Slider />
             </div>
-            </>
-        );
-    }
-}
+        </>
+    );
+};
  
 export default Home;
