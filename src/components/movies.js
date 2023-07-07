@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import style from '../styles/style.module.css';
 import axios from 'axios';
 import Movie from './movie';
-import Genre from './genre';
+// import Genre from './genre';
 import error404 from '../images/error-4.jpeg'
 
 class Movies extends Component {
@@ -10,7 +10,9 @@ class Movies extends Component {
         super(props);
         this.state = {
             movies : [],
+            selectMovies: [],
             genres : [],
+            selectGener: [],
             isError: false,
             searchValue: ""
         };
@@ -24,7 +26,8 @@ class Movies extends Component {
         axios.get('movies.json')
         .then(res => {
             this.setState({
-                movies: res.data
+                movies: res.data,
+                selectMovies: res.data
         }, () => {
             this.getGenreData();
             })
@@ -47,17 +50,33 @@ class Movies extends Component {
                 } 
             } 
         }
+
         this.setState({
             genres: genreArray
         })
-    }
+    };
 
     inputHandler = (event) => {
         this.setState({
-            searchValue: event.target.value
+            searchValue: event.target.value,
+            selectMovies: this.state.movies.filter((movie) =>
+            movie.title.toLowerCase().includes(event.target.value.toLowerCase())
+            ),
         });
-    }
+    };
     
+    generBoxHandler(gener){
+        var temp = this.state.selectGener.indexOf(gener)
+        if (temp === -1) {
+            this.setState.selectGener.push(gener)
+        } else {
+            this.setState.selectGener.splice(temp ,1)
+        }
+    }
+    selectGenerHandler(gener){
+
+    }
+
     render() { 
         const {movies, isError, genres, searchValue} = this.state;
         return (
@@ -77,11 +96,13 @@ class Movies extends Component {
                         <div className={style.movie_container}>
                             <div className={style.search_bar}>
                                 <div className={style.search_box}>
-                                    <input placeholder='Search' type="" name="" value={searchValue} onChange={this.inputHandler}/>
+                                    <input placeholder='Search' type="text" name="searchTitle" value={searchValue} onChange={this.inputHandler}/>
                                 </div>
                                 <div className={style.genre_choice}>
                                     {genres.map((genre)=>(
-                                        <Genre key={genre} genre={genre} />
+                                        <button className={style.genre_box} key={index} onClick={() => this.selectGenerHandler(gener)}>
+                                            {genre}
+                                        </button>
                                     ))}
                                 </div>
                             </div>

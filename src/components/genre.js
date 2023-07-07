@@ -6,9 +6,9 @@ class Genre extends Component {
         const {genre} = this.props;
         return (
             <>
-                <div className={style.genre_box}>
+                <button className={style.genre_box}>
                     {genre}
-                </div>
+                </button>
             </>
         );
     }
