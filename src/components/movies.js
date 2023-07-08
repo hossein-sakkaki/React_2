@@ -12,7 +12,7 @@ class Movies extends Component {
             movies : [],
             selectMovies: [],
             genres : [],
-            selectGener: [],
+            selectGenre: [],
             isError: false,
             searchValue: ""
         };
@@ -56,29 +56,48 @@ class Movies extends Component {
         })
     };
 
-    inputHandler = (event) => {
+
+    
+    genreBoxHandler(genre){
+        var temp = this.state.selectGenre.indexOf(genre)
+        if (temp === -1) {
+            this.state.selectGenre.push(genre)
+        } else {
+            this.state.selectGenre.splice(temp ,1)
+        }
+
+    }
+
+    selectGenreHandler = (genre) => {
+        this.genreBoxHandler(genre);
+        let temp = [];
+        this.state.selectGenre.map((genre) => {
+            const choiceMovie = this.state.movies.filter((movie) =>
+                movie.Genre.includes(genre)
+            );
+            choiceMovie.map((movie)=> {
+                if (temp.indexOf(movie) === -1) {
+                    temp.push(movie);
+                }
+            });
+        });
+
         this.setState({
-            searchValue: event.target.value,
+            selectMovies: temp,
+        });
+    };
+
+    changeHandler = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value,
             selectMovies: this.state.movies.filter((movie) =>
-            movie.title.toLowerCase().includes(event.target.value.toLowerCase())
+                movie.Title.toLowerCase().includes(event.target.value.toLowerCase())
             ),
         });
     };
-    
-    generBoxHandler(gener){
-        var temp = this.state.selectGener.indexOf(gener)
-        if (temp === -1) {
-            this.setState.selectGener.push(gener)
-        } else {
-            this.setState.selectGener.splice(temp ,1)
-        }
-    }
-    selectGenerHandler(gener){
-
-    }
 
     render() { 
-        const {movies, isError, genres, searchValue} = this.state;
+        const {selectMovies, isError, genres, searchValue} = this.state;
         return (
             <>
                 {
@@ -96,19 +115,35 @@ class Movies extends Component {
                         <div className={style.movie_container}>
                             <div className={style.search_bar}>
                                 <div className={style.search_box}>
-                                    <input placeholder='Search' type="text" name="searchTitle" value={searchValue} onChange={this.inputHandler}/>
+                                    <input 
+                                        placeholder='Search' 
+                                        type="text" 
+                                        name="searchValue" 
+                                        value={searchValue} 
+                                        onChange={this.changeHandler}/>
                                 </div>
                                 <div className={style.genre_choice}>
-                                    {genres.map((genre)=>(
-                                        <button className={style.genre_box} key={index} onClick={() => this.selectGenerHandler(gener)}>
+                                    {genres.map((genre, index)=>(
+                                        <button 
+                                            className={style.genre_box} 
+                                            key={index} 
+                                            onClick={() => this.selectGenreHandler(genre)}
+                                        >
                                             {genre}
                                         </button>
                                     ))}
                                 </div>
                             </div>
                             <div className={style.movies}>
-                                {movies.map((movie) => (
-                                    <Movie key={movie.Id} title={movie.Title} year={movie.Year} thumbnail={movie.Poster} genre={movie.Genre} director={movie.Director}/>
+                                {selectMovies.map((movie) => (
+                                    <Movie 
+                                        key={movie.Id} 
+                                        title={movie.Title} 
+                                        year={movie.Year} 
+                                        thumbnail={movie.Poster} 
+                                        genre={movie.Genre} 
+                                        director={movie.Director}
+                                    />
                                 ))}
                             </div>
                         </div>
